@@ -1,0 +1,11 @@
+# Hassas & Geçici Dosyalar
+.DS_Store
+*.log
+*.tmp
+
+# İkili / Önbellek Verileri
+.config/dconf/
+.config/pulse/
+librewolf/
+BraveSoftware/
+ZapZap/
