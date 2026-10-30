@@ -46,7 +46,7 @@ Minimalist, dark-themed, and productivity-focused Arch Linux desktop configurati
 Run the automated installation script on a fresh Arch Linux setup:
 
 ```bash
-git clone [https://github.com/Chanbadar/my-dotfiles.git](https://github.com/Chanbadar/my-dotfiles.git)
+git clone https://github.com/Chanbadar/my-dotfiles.git
 cd my-dotfiles
 chmod +x install.sh
 ./install.sh
