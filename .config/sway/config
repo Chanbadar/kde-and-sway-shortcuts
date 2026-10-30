@@ -37,7 +37,7 @@ exec wl-paste --type image --watch cliphist store
 exec autotiling
 
 # 15 Dakika (900s) Boşta Kalırsa Ekranı Otomatik Kilitle
-exec swayidle -w timeout 900 'swaylock -i /home/arch/Pictures/Wallpapers/lock-screen/lock-screen-wallpaper.jpg -s fill'
+exec swayidle -w timeout 900 'swaylock -c 000000'
 
 # XDG Desktop Portal Başlatıcı
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
@@ -108,7 +108,7 @@ bindsym $mod+Shift+r exec wf-recorder -g "$(slurp)" -f ~/Videos/recording_$(date
 # ------------------------------------------------------------------------------
 
 # Ekran Kilitleme (Meta+L)
-bindsym $mod+l exec swaylock -i /home/arch/Pictures/Wallpapers/lock-screen/lock-screen-wallpaper.jpg -s fill
+bindsym $mod+l exec swaylock -c 000000
 
 # Pencere Kapatma (Meta+Shift+Q veya Alt+F4)
 bindsym $mod+Shift+q kill
