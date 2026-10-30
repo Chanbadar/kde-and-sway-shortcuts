@@ -36,8 +36,12 @@ exec wl-paste --type image --watch cliphist store
 # Tiling Sistemi
 exec autotiling
 
-# 15 Dakika (900s) Boşta Kalırsa Ekranı Otomatik Kilitle
-exec swayidle -w timeout 900 'swaylock -c 000000'
+# 15 Dakika (900s) Boşta Kalırsa Ekranı Otomatik Kilitle ve 16 dakika Olursa paneli kapat
+exec swayidle -w \
+    timeout 900 'swaylock -c 000000' \
+    timeout 960 'swaymsg "output * dpms off"' \
+    resume 'swaymsg "output * dpms on"' \
+    before-sleep 'swaylock -c 000000'
 
 # XDG Desktop Portal Başlatıcı
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
@@ -62,7 +66,7 @@ bindsym $mod+f exec librewolf
 # ZapZap WhatsApp Client (Meta+Z)
 bindsym $mod+z exec zapzap
 
-# Dolphin Dosya Yöneticisi (Meta+E)
+# Thunar Dosya Yöneticisi (Meta+E)
 bindsym $mod+e exec thunar
 
 # Sistem İzleyici / System Monitor (Esc)
@@ -86,6 +90,7 @@ bindsym Mod1+Tab exec rofi -show window
 
 # Rahatsız Etme Modu (Meta+Shift+N) - Bildirimleri Aç / Kapat
 bindsym $mod+Shift+n exec bash -c 'if makoctl mode | grep -q "dnd"; then makoctl mode -r dnd; notify-send -t 2000 -c dnd_status "Notification Mode" "Do Not Disturb OFF (Notifications Enabled)"; else notify-send -t 2000 -c dnd_status "Notification Mode" "Do Not Disturb ON (Notifications Muted)"; sleep 0.1; makoctl mode -a dnd; fi'
+
 # ------------------------------------------------------------------------------
 # 3. EKRAN GÖRÜNTÜSÜ VE KAYIT (grim + slurp + swappy)
 # ------------------------------------------------------------------------------
@@ -108,7 +113,7 @@ bindsym $mod+Shift+r exec wf-recorder -g "$(slurp)" -f ~/Videos/recording_$(date
 # ------------------------------------------------------------------------------
 
 # Ekran Kilitleme (Meta+L)
-bindsym $mod+l exec swaylock -c 000000
+bindsym $mod+l exec swaylock
 
 # Pencere Kapatma (Meta+Shift+Q veya Alt+F4)
 bindsym $mod+Shift+q kill
