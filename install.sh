@@ -27,7 +27,7 @@ PACMAN_PKGS=(
     brightnessctl playerctl wireplumber pipewire-audio
     blueman network-manager-applet plasma-systemmonitor
     xdg-desktop-portal-wlr xdg-desktop-portal-gtk
-    polkit-kde-agent xdg-user-dirs
+    polkit-kde-agent xdg-user-dirs tlp
     ttf-font-awesome noto-fonts noto-fonts-emoji
     breeze-gtk qt5ct qt6ct
 )
@@ -67,9 +67,21 @@ xdg-mime default org.pwmt.zathura.desktop application/pdf
 # Set Configuration Permissions
 chmod +x ~/.config/sway/config 2>/dev/null || true
 
+# 6. TLP Power Management Configuration
+echo "Configuring TLP power management..."
+
+sudo systemctl enable tlp.service
+
+git clone https://github.com/Chanbadar/TLP-Supergfxctl-Settings-For-Battery.git /tmp/tlp-settings
+if [ -f /tmp/tlp-settings/tlp.conf ]; then
+    sudo cp /tmp/tlp-settings/tlp.conf /etc/tlp.conf
+    sudo tlp start
+fi
+rm -rf /tmp/tlp-settings
+
 echo "Installation complete. Self-cleaning installation directory..."
 
-# 6. Self Cleanup (Removes cloned repository)
+# 7. Self Cleanup (Removes cloned repository)
 cd ~
 rm -rf "$SCRIPT_DIR"
 
