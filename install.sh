@@ -60,6 +60,12 @@ echo "Applying dark theme configurations..."
 gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 gsettings set org.gnome.desktop.interface gtk-theme 'Breeze-Dark'
 
+# Deploy System Environment Variables (/etc/environment)
+if [ -f "$SCRIPT_DIR/environment" ]; then
+    echo "Deploying system environment variables to /etc/environment..."
+    sudo cp "$SCRIPT_DIR/environment" /etc/environment
+fi
+
 # Setting Default Applications
 xdg-mime default imv.desktop image/png image/jpeg image/webp image/gif
 xdg-mime default org.pwmt.zathura.desktop application/pdf

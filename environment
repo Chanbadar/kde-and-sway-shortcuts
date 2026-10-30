@@ -1,0 +1,11 @@
+#
+# This file is parsed by pam_env module
+#
+# Syntax: simple "KEY=VAL" pairs on separate lines
+#
+SWAY_UNSUPPORTED_GPU=1
+GTK_THEME=Breeze-Dark
+QT_QPA_PLATFORMTHEME=qt6ct
+QT_STYLE_OVERRIDE=Breeze
+QT_AUTO_SCREEN_SCALE_FACTOR=1
+GTK_USE_PORTAL=1
