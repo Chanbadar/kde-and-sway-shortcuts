@@ -34,7 +34,7 @@ exec wl-paste --type text --watch cliphist store
 exec wl-paste --type image --watch cliphist store
 
 # Tiling Sistemi
-exec autotiling
+exec_always killall autotiling; autotiling
 
 # 15 Dakika (900s) Boşta Kalırsa Ekranı Otomatik Kilitle ve 16 dakika Olursa paneli kapat
 exec swayidle -w \
