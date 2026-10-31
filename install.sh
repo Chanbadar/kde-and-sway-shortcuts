@@ -42,7 +42,7 @@ AUR_PKGS=(
     rofi-emoji
 )
 
-yay -S --needed --noconfirm "${AUR_PKGS[@]}"
+yay -S --needed --noconfirm --answerdiff=None --answerclean=None "${AUR_PKGS[@]}"
 
 # 4. Copying Configuration Files
 echo "Deploying configuration files to ~/.config/..."
@@ -51,8 +51,8 @@ mkdir -p ~/.config
 cp -rf "$SCRIPT_DIR/.config/"* ~/.config/
 
 # Initialize XDG User Directories
-mkdir -p ~/Downloads ~/Pictures ~/Videos ~/Documents ~/Pictures/Wallpapers/lock-screen
-xdg-user-dirs-update
+mkdir -p ~/Desktop ~/Downloads ~/Templates ~/Public ~/Documents ~/Music ~/Pictures ~/Videos ~/Pictures/Wallpapers/lock-screen
+xdg-user-dirs-update --force
 
 # 5. System Theme & Portal Integration
 echo "Applying dark theme configurations..."
